@@ -763,6 +763,10 @@
   margin-top: 0.7rem;
 }
 
+.activity__content--offline {
+  grid-template-columns: 58px minmax(0, 1fr);
+}
+
 .activity__art {
   width: 58px;
   height: 58px;
@@ -771,8 +775,38 @@
   background: rgba(255, 255, 255, 0.06);
 }
 
+.activity__offline-orb {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 214, 92, 0.2);
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(255, 226, 154, 0.12), rgba(255, 216, 107, 0.04)),
+    rgba(255, 255, 255, 0.03);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 245, 201, 0.12),
+    0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.activity__offline-orb svg {
+  width: 26px;
+  height: 26px;
+  color: #ffd86b;
+  filter: drop-shadow(0 0 10px rgba(255, 216, 107, 0.18));
+}
+
 .activity__copy {
   min-width: 0;
+}
+
+.activity__copy--offline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+  min-height: 58px;
 }
 
 .activity strong {
@@ -784,6 +818,13 @@
   font-weight: 600;
 }
 
+.activity__copy--offline .activity__title--offline {
+  color: #ffe29a;
+  min-height: auto;
+  margin: 0;
+  line-height: 1.2;
+}
+
 .activity__artist {
   display: inline-block;
   margin-top: 0.35rem;
@@ -791,6 +832,21 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.68rem;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.activity__status {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0;
+}
+
+.activity__status-label {
+  color: #ffd86b;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 

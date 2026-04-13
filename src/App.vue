@@ -548,26 +548,51 @@ function resetCardTilt() {
           <div class="activity">
             <div class="activity__meta">
               <span>#1 nowplaying</span>
-              <span>{{ lastfmTrack?.timestamp ?? 'loading' }}</span>
+              <span>{{
+                lastfmState === 'error'
+                  ? 'service status'
+                  : lastfmTrack?.timestamp ?? 'loading'
+              }}</span>
             </div>
-            <div class="activity__content">
+            <div
+              class="activity__content"
+              :class="{ 'activity__content--offline': lastfmState === 'error' }"
+            >
               <img
-                v-if="lastfmTrack?.artwork"
+                v-if="lastfmTrack?.artwork && lastfmState !== 'error'"
                 class="activity__art"
                 :src="lastfmTrack.artwork"
                 alt=""
               />
-              <div class="activity__copy">
-                <strong>
+              <div v-else-if="lastfmState === 'error'" class="activity__offline-orb" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 3.75 20.25 18a1.5 1.5 0 0 1-1.3 2.25H5.05A1.5 1.5 0 0 1 3.75 18L12 3.75Z"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M12 9v4.5"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-width="1.8"
+                  />
+                  <circle cx="12" cy="16.5" r="1" fill="currentColor" />
+                </svg>
+              </div>
+              <div class="activity__copy" :class="{ 'activity__copy--offline': lastfmState === 'error' }">
+                <strong :class="{ 'activity__title--offline': lastfmState === 'error' }">
                   {{
                     lastfmTrack?.title ??
                     (lastfmState === 'error'
-                      ? 'unable to load last.fm scrobble'
+                      ? 'Now playing unavailable'
                       : 'loading last.fm scrobble')
                   }}
                 </strong>
                 <a
-                  v-if="lastfmTrack"
+                  v-if="lastfmTrack && lastfmState !== 'error'"
                   class="activity__artist"
                   :href="lastfmTrack.url"
                   target="_blank"
@@ -575,6 +600,9 @@ function resetCardTilt() {
                 >
                   {{ lastfmTrack.artist }}
                 </a>
+                <div v-else-if="lastfmState === 'error'" class="activity__status activity__status--offline">
+                  <span class="activity__status-label">API OFFLINE</span>
+                </div>
                 <span v-else class="activity__artist">
                   Last.fm / Kisakay
                 </span>
