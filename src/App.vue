@@ -28,6 +28,7 @@ const backgroundVideoUrl = `${import.meta.env.BASE_URL}assets/background.mp4`
 const bannerUrl = `${import.meta.env.BASE_URL}assets/banner.jpg`
 const avatarUrl = `${import.meta.env.BASE_URL}assets/pfp.jpg`
 const songUrl = `${import.meta.env.BASE_URL}assets/song.mp3`
+const apiBaseUrl = resolveApiBaseUrl()
 const lastfmTrack = ref<LastfmTrack | null>(null)
 const lastfmState = ref<'loading' | 'ready' | 'error'>('loading')
 const audioElement = ref<HTMLAudioElement | null>(null)
@@ -100,13 +101,31 @@ function enterProfile() {
   void playAudio()
 }
 
+function resolveApiBaseUrl() {
+  const configuredApiBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim()
+
+  if (configuredApiBaseUrl) {
+    return configuredApiBaseUrl.replace(/\/+$/, '')
+  }
+
+  if (import.meta.env.DEV) {
+    return window.location.origin
+  }
+
+  return 'https://profile.kisakay.com'
+}
+
+function buildApiUrl(path: string) {
+  return new URL(path, `${apiBaseUrl}/`).toString()
+}
+
 async function updateNowPlaying() {
   if (!lastfmTrack.value) {
     lastfmState.value = 'loading'
   }
 
   try {
-    const response = await fetch('/api/lastfm', {
+    const response = await fetch(buildApiUrl('/api/lastfm'), {
       cache: 'no-store',
     })
 
@@ -132,7 +151,7 @@ async function registerView() {
   viewState.value = 'loading'
 
   try {
-    const response = await fetch('/api/views', {
+    const response = await fetch(buildApiUrl('/api/views'), {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -160,7 +179,7 @@ async function registerView() {
 
 async function fetchViewCount() {
   try {
-    const response = await fetch('/api/views', {
+    const response = await fetch(buildApiUrl('/api/views'), {
       cache: 'no-store',
     })
 
