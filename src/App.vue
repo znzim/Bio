@@ -73,7 +73,7 @@ onMounted(() => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const supportsFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches
 
-  entered.value = prefersReducedMotion
+  entered.value = false
   tiltEnabled.value = supportsFinePointer && !prefersReducedMotion
   void updateNowPlaying()
   void registerView()
@@ -487,7 +487,7 @@ function resetCardTilt() {
               <span>Somewhere in Brittany</span>
             </div>
             <p class="identity__bio">
-              developer, community builder and internet enjoyer.
+              developer, internet enjoyer.
             </p>
           </div>
 
