@@ -21,7 +21,7 @@ import (
 
 const (
 	defaultLastfmUser = "Kisakay"
-	defaultPort       = "8080"
+	defaultPort       = "13873"
 )
 
 type config struct {
@@ -99,6 +99,7 @@ func main() {
 		ViewStorePath:  firstNonEmpty(os.Getenv("VIEW_STORE_PATH"), filepath.Join("server-data", "views.json")),
 		Port:           firstNonEmpty(os.Getenv("PORT"), defaultPort),
 	}
+	fmt.Println(fmt.Sprintf(cfg.LastfmAPIKey, cfg.LastfmUser, cfg.Port, cfg.ViewHashSecret))
 
 	store, err := newViewStore(cfg.ViewStorePath)
 	if err != nil {
