@@ -1,0 +1,64 @@
+import type { ProfileConfigSource } from './schema'
+
+const profileConfig: ProfileConfigSource = {
+  content: {
+    siteTitle: '@2h0 | Kisakay',
+    enterButtonLabel: 'click here',
+    enterButtonAriaLabel: 'Enter profile',
+    audioPlayLabel: 'Play audio',
+    audioPauseLabel: 'Pause audio',
+    playerTrackLabel: 'song.mp3',
+    bannerLabel: 'kisakay.com',
+    bannerAlt: 'Kisakay banner',
+    avatarAlt: 'Portrait of Kisakay',
+    handle: '@2h0',
+    displayName: 'Kisakay',
+    pronouns: 'she / her',
+    badgesAriaLabel: 'Discord badges',
+    locationAriaLabel: 'Location',
+    location: 'Somewhere in Brittany',
+    bio: 'developer, internet enjoyer.',
+    socialNavAriaLabel: 'Social links',
+    nowPlayingLabel: '#1 nowplaying',
+    lastfmLoadingTimestampLabel: 'loading',
+    lastfmServiceStatusLabel: 'service status',
+    lastfmUnavailableTitle: 'Now playing unavailable',
+    lastfmLoadingTitle: 'loading last.fm scrobble',
+    lastfmOfflineLabel: 'API OFFLINE',
+    lastfmFallbackArtist: 'Last.fm / Kisakay',
+    viewsOfflineLabel: 'offline',
+    viewsLoadingLabel: '...',
+    numberLocale: 'en-US',
+  },
+  assets: {
+    backgroundVideoPath: 'assets/background.mp4',
+    bannerPath: 'assets/banner.jpg',
+    avatarPath: 'assets/pfp.jpg',
+    songPath: 'assets/song.mp3',
+  },
+  socials: [
+    { label: 'Discord', icon: 'discord', url: 'https://discord.com/users/171356978310938624' },
+    { label: 'GitHub', icon: 'github', url: 'https://github.com/Kisakay' },
+    { label: 'iHorizon', icon: 'globe', url: 'https://www.ihorizon.org' },
+    { label: 'YouTube', icon: 'youtube', url: 'https://youtube.com/@Kisakay' },
+  ],
+  badges: [
+    { label: 'Bug Hunter Gold', icon: 'assets/discord_badges/bug_hunter_level_2.svg' },
+    { label: 'Early Verified Bot Developer', icon: 'assets/discord_badges/early_verified_developer.svg' },
+    { label: 'Server Booster 24 Months', icon: 'assets/discord_badges/boosting_24_months.svg' },
+  ],
+  api: {
+    lastfmPath: '/api/lastfm',
+    viewsPath: '/api/views',
+    refreshIntervalMs: 60_000,
+  },
+  theme: {
+    accent: '#ff7bc2',
+    accentSoft: '#ffb7db',
+    accentStrong: '#ff4ba6',
+    warning: '#ffd86b',
+    warningSoft: '#ffe29a',
+  },
+}
+
+export default profileConfig

@@ -9,6 +9,8 @@
   font-family: 'Outfit', sans-serif;
   background: #050506;
   color: #f7f2ec;
+  --accent: #ff7bc2;
+  --accent-rgb: 255 123 194;
 }
 
 *,
@@ -52,6 +54,6 @@ img {
 }
 
 ::selection {
-  background: rgba(255, 123, 194, 0.32);
+  background: rgb(var(--accent-rgb) / 0.32);
   color: #ffffff;
 }
