@@ -33,6 +33,7 @@ func NewServer(cfg config.Config, lastfmClient *lastfm.Client, viewStore *views.
 
 func (s *Server) Handler() http.Handler {
 	mux := http.NewServeMux()
+	mux.HandleFunc("/", s.handleRoot)
 	mux.HandleFunc("/api/lastfm", s.handleLastfm)
 	mux.HandleFunc("/api/views", s.handleViews)
 

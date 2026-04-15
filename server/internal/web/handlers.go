@@ -11,6 +11,23 @@ type viewsResponse struct {
 	Added bool `json:"added,omitempty"`
 }
 
+func (s *Server) handleRoot(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodOptions {
+		w.WriteHeader(http.StatusNoContent)
+		return
+	}
+
+	if r.Method != http.MethodGet {
+		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	writeJSON(w, http.StatusOK, rootResponse{
+		Name:   "Kisakay API",
+		Routes: apiRoutes(),
+	})
+}
+
 func (s *Server) handleLastfm(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodOptions {
 		w.WriteHeader(http.StatusNoContent)
