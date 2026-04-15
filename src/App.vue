@@ -4,6 +4,20 @@ import { appConfig, type LastfmTrack } from './config/appConfig'
 import './App.css'
 
 const { content, assets, socials, badges, api, themeStyles, features } = appConfig
+const hasSocialLinks = socials.length > 0
+const hasBadges = badges.length > 0
+const visibleIdentityDetailCount = [
+  features.displayNameEnabled,
+  features.pronounsEnabled,
+  features.locationEnabled,
+  features.bioEnabled,
+].filter(Boolean).length
+const cardSupplementCount =
+  visibleIdentityDetailCount +
+  (api.lastfmEnabled ? 1 : 0) +
+  (hasSocialLinks ? 1 : 0)
+const cardIsSparse = cardSupplementCount <= 2
+const cardIsMinimal = cardSupplementCount <= 1
 
 const entered = ref(false)
 const lastfmTrack = ref<LastfmTrack | null>(null)
@@ -402,6 +416,8 @@ function resetCardTilt() {
       <section class="profile-card" :class="{
         'profile-card--tilting': cardTiltActive && tiltEnabled,
         'profile-card--compact': !api.lastfmEnabled,
+        'profile-card--sparse': cardIsSparse,
+        'profile-card--minimal': cardIsMinimal,
       }" :style="{
           '--card-rotate-x': `${cardRotateX}deg`,
           '--card-rotate-y': `${cardRotateY}deg`,
@@ -419,24 +435,27 @@ function resetCardTilt() {
           </div>
         </div>
 
-        <div class="profile-card__body">
-          <div class="avatar-ring">
+        <div class="profile-card__body" :class="{
+          'profile-card__body--sparse': cardIsSparse,
+          'profile-card__body--minimal': cardIsMinimal,
+        }">
+          <div class="avatar-ring" :class="{ 'avatar-ring--minimal': cardIsMinimal }">
             <img :src="assets.avatarUrl" :alt="content.avatarAlt" />
           </div>
 
-          <div class="identity">
+          <div class="identity" :class="{ 'identity--minimal': cardIsMinimal }">
             <div class="identity__heading">
               <h1>{{ content.handle }}</h1>
-              <div class="identity__badges" :aria-label="content.badgesAriaLabel">
+              <div v-if="hasBadges" class="identity__badges" :aria-label="content.badgesAriaLabel">
                 <span v-for="badge in badges" :key="badge.label" class="identity__badge" :title="badge.label"
                   :aria-label="badge.label">
                   <img :src="badge.icon" :alt="badge.label" />
                 </span>
               </div>
             </div>
-            <p class="identity__subtitle">{{ content.displayName }}</p>
-            <p class="identity__pronouns">{{ content.pronouns }}</p>
-            <div class="identity__location" :aria-label="content.locationAriaLabel">
+            <p v-if="features.displayNameEnabled" class="identity__subtitle">{{ content.displayName }}</p>
+            <p v-if="features.pronounsEnabled" class="identity__pronouns">{{ content.pronouns }}</p>
+            <div v-if="features.locationEnabled" class="identity__location" :aria-label="content.locationAriaLabel">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M12 21s6-4.35 6-10a6 6 0 1 0-12 0c0 5.65 6 10 6 10Z" stroke="currentColor"
                   stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
@@ -444,12 +463,12 @@ function resetCardTilt() {
               </svg>
               <span>{{ content.location }}</span>
             </div>
-            <p class="identity__bio">
+            <p v-if="features.bioEnabled" class="identity__bio">
               {{ content.bio }}
             </p>
           </div>
 
-          <nav class="social-row" :aria-label="content.socialNavAriaLabel">
+          <nav v-if="hasSocialLinks" class="social-row" :aria-label="content.socialNavAriaLabel">
             <a v-for="link in socials" :key="link.label" :href="link.url" class="social-row__link"
               :aria-label="link.label" target="_blank" rel="noreferrer">
               <svg class="social-row__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">

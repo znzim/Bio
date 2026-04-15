@@ -56,6 +56,10 @@ const profileConfig: ProfileConfigSource = {
     playerEnabled: true,
     viewCounterEnabled: true,
     animatedTitleEnabled: true,
+    locationEnabled: true,
+    pronounsEnabled: true,
+    displayNameEnabled: true,
+    bioEnabled: true,
   },
   api: {
     lastfmPath: '/api/lastfm',

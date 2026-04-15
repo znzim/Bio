@@ -174,6 +174,10 @@ export const appConfig: AppConfig = {
     playerEnabled: profileConfig.features.playerEnabled !== false,
     viewCounterEnabled: profileConfig.features.viewCounterEnabled !== false,
     animatedTitleEnabled: profileConfig.features.animatedTitleEnabled !== false,
+    locationEnabled: profileConfig.features.locationEnabled !== false,
+    pronounsEnabled: profileConfig.features.pronounsEnabled !== false,
+    displayNameEnabled: profileConfig.features.displayNameEnabled !== false,
+    bioEnabled: profileConfig.features.bioEnabled !== false,
   },
   api: {
     baseUrl: resolveApiBaseUrl(import.meta.env.VITE_API_BASE_URL),

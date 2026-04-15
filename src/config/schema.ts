@@ -74,6 +74,10 @@ export interface ProfileFeatures {
   playerEnabled: boolean
   viewCounterEnabled: boolean
   animatedTitleEnabled: boolean
+  locationEnabled: boolean
+  pronounsEnabled: boolean
+  displayNameEnabled: boolean
+  bioEnabled: boolean
 }
 
 export interface StaticApiConfig {
