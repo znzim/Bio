@@ -172,7 +172,7 @@
 .corner-player {
   top: 1rem;
   left: 1rem;
-  min-width: 220px;
+  min-width: 260px;
   transform: translate3d(-12px, -8px, 0);
 }
 
@@ -210,6 +210,45 @@
 .corner-player__button svg {
   width: 1.15rem;
   height: 1.15rem;
+}
+
+.corner-player__controls {
+  display: flex;
+  align-items: center;
+  min-width: 140px;
+}
+
+.corner-player__slider {
+  width: 130px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  outline: none;
+  appearance: none;
+  transition: background 180ms ease;
+}
+
+.corner-player__slider:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.corner-player__slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(var(--accent-rgb) / 0.16);
+  cursor: pointer;
+}
+
+.corner-player__slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: none;
+  cursor: pointer;
 }
 
 .corner-player__copy,
@@ -312,8 +351,8 @@
   --card-shift-y: 0px;
   --card-glow-x: 50%;
   --card-glow-y: 24%;
-  width: min(100%, 380px);
-  min-height: 650px;
+  width: min(100%, 430px);
+  min-height: 520px;
   position: relative;
   margin-inline: auto;
   overflow: hidden;
@@ -339,7 +378,7 @@
 }
 
 .profile-card--compact {
-  min-height: 590px;
+  min-height: 480px;
 }
 
 .profile-card--sparse {
@@ -450,13 +489,13 @@
 
 .profile-card__banner {
   position: relative;
-  height: 188px;
+  height: 150px;
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .profile-card--minimal .profile-card__banner {
-  height: 172px;
+  height: 140px;
 }
 
 .profile-card__banner::after {
@@ -982,7 +1021,7 @@
   }
 
   .profile-card--compact {
-    min-height: 555px;
+    min-height: 475px;
   }
 
   .profile-card--sparse {
