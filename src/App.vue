@@ -418,7 +418,8 @@ function resetCardTilt() {
             fill="currentColor" />
         </svg>
       </button>
-      <div class="corner-player__controls">
+      <div class="corner-player__copy">
+        <strong>{{ content.playerTrackLabel }}</strong>
         <input
           class="corner-player__slider"
           type="range"
@@ -429,9 +430,6 @@ function resetCardTilt() {
           aria-label="Volume"
           @input="setAudioVolume"
         />
-      </div>
-      <div class="corner-player__copy">
-        <strong>{{ content.playerTrackLabel }}</strong>
         <div class="corner-player__progress" aria-hidden="true">
           <span class="corner-player__progress-fill" :style="{ width: getAudioProgress() }"></span>
         </div>
