@@ -27,7 +27,6 @@ const audioPlaying = ref(false)
 const audioState = ref<'idle' | 'ready' | 'error'>('idle')
 const audioCurrentTime = ref(0)
 const audioDuration = ref(0)
-const audioVolume = ref(0.65)
 const viewCount = ref<number | null>(35373)
 const viewState = ref<'loading' | 'ready' | 'error'>('ready')
 const customCursorEnabled = ref(false)
@@ -64,9 +63,6 @@ onMounted(() => {
   }
   if (features.viewCounterEnabled) {
     void registerView()
-  }
-  if (features.playerEnabled && audioElement.value) {
-    audioElement.value.volume = audioVolume.value
   }
 
   if (api.lastfmEnabled) {
@@ -280,15 +276,6 @@ function handleAudioMetadata() {
     : 0
 }
 
-function setAudioVolume(event: Event) {
-  const input = event.target as HTMLInputElement
-  audioVolume.value = Number(input.value)
-
-  if (audioElement.value) {
-    audioElement.value.volume = audioVolume.value
-  }
-}
-
 function getAudioProgress() {
   if (!audioDuration.value || audioState.value === 'error') {
     return '0%'
@@ -420,16 +407,6 @@ function resetCardTilt() {
       </button>
       <div class="corner-player__copy">
         <strong>{{ content.playerTrackLabel }}</strong>
-        <input
-          class="corner-player__slider"
-          type="range"
-          min="0"
-          max="1"
-          step="0.01"
-          :value="audioVolume"
-          aria-label="Volume"
-          @input="setAudioVolume"
-        />
         <div class="corner-player__progress" aria-hidden="true">
           <span class="corner-player__progress-fill" :style="{ width: getAudioProgress() }"></span>
         </div>
