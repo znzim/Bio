@@ -4,12 +4,12 @@
 
 # Hosting Your Own Profile with GitHub Pages
 
-This repo is designed to publish the frontend on GitHub Pages through the workflow [deploy-pages.yml](/home/kisakay/Documents/Code/GitHub/Kisakay/.github/workflows/deploy-pages.yml).
+This repo is designed to publish the frontend on GitHub Pages through the workflow [deploy-pages.yml](.github/workflows/deploy-pages.yml).
 
 Important:
 
 - GitHub Pages only hosts the frontend
-- the Go API in [server](/home/kisakay/Documents/Code/GitHub/Kisakay/server) cannot run on GitHub Pages
+- the Go API in [server](server) cannot run on GitHub Pages
 - you do not need to host your own API to use this profile
 - the public API at `https://profile.kisakay.com` is meant to be reused and is the recommended stable option for Last.fm and the view counter
 
@@ -27,7 +27,7 @@ npm install
 
 ## 2. Customize the profile
 
-The main file to edit is [src/config/config.ts](/home/kisakay/Documents/Code/GitHub/Kisakay/src/config/config.ts).
+The main file to edit is [src/config/config.ts](src/config/config.ts).
 
 You can change:
 
@@ -37,7 +37,7 @@ You can change:
 - `features`: enable or disable sections
 - `theme`: colors
 
-You can also replace the files inside [public/assets](/home/kisakay/Documents/Code/GitHub/Kisakay/public/assets):
+You can also replace the files inside [public/assets](public/assets):
 
 - `banner.jpg`
 - `pfp.jpg`
@@ -48,7 +48,7 @@ You can also replace the files inside [public/assets](/home/kisakay/Documents/Co
 
 The most important setting for GitHub Pages is `VITE_BASE_PATH`.
 
-This repo already uses that variable in [vite.config.ts](/home/kisakay/Documents/Code/GitHub/Kisakay/vite.config.ts).
+This repo already uses that variable in [vite.config.ts](vite.config.ts).
 
 ### Case A: custom domain or user page
 
@@ -98,7 +98,7 @@ In other words, if you want to host your own profile on GitHub Pages, only the f
 
 ### If you want a fully GitHub Pages-only site
 
-Since GitHub Pages cannot run the Go API, you should disable dynamic features in [src/config/config.ts](/home/kisakay/Documents/Code/GitHub/Kisakay/src/config/config.ts):
+Since GitHub Pages cannot run the Go API, you should disable dynamic features in [src/config/config.ts](src/config/config.ts):
 
 ```ts
 features: {
@@ -127,7 +127,7 @@ Self-hosting the API is still possible if you want your own infrastructure, but 
 
 ## 5. Update the GitHub Pages workflow
 
-Deployment is handled by [deploy-pages.yml](/home/kisakay/Documents/Code/GitHub/Kisakay/.github/workflows/deploy-pages.yml).
+Deployment is handled by [deploy-pages.yml](.github/workflows/deploy-pages.yml).
 
 In your fork, the main thing you need to adjust is `VITE_BASE_PATH`.
 
@@ -149,7 +149,7 @@ Only change `VITE_API_BASE_URL` if you explicitly want to connect your own API.
 
 ## 6. Manage the custom domain
 
-The file [public/CNAME](/home/kisakay/Documents/Code/GitHub/Kisakay/public/CNAME) is used for a custom domain.
+The file [public/CNAME](public/CNAME) is used for a custom domain.
 
 ### If you use your own domain
 
@@ -195,9 +195,9 @@ VITE_BASE_PATH=/repository-name/ npm run build
 To host your own profile with this repo:
 
 1. fork the repo
-2. edit [src/config/config.ts](/home/kisakay/Documents/Code/GitHub/Kisakay/src/config/config.ts) and `public/assets`
+2. edit [src/config/config.ts](src/config/config.ts) and `public/assets`
 3. set `VITE_BASE_PATH` for your GitHub Pages URL
-4. replace or remove [public/CNAME](/home/kisakay/Documents/Code/GitHub/Kisakay/public/CNAME)
+4. replace or remove [public/CNAME](public/CNAME)
 5. keep `VITE_API_BASE_URL=https://profile.kisakay.com` if you want to keep dynamic features
 6. push to `main`
 
