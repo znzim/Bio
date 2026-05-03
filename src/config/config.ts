@@ -38,8 +38,8 @@ const profileConfig: ProfileConfigSource = {
     songPath: 'assets/song.mp3',
   },
   socials: [
-    { label: 'Discord', icon: 'discord', url: 'https://discord.gg/reqb' },
-    { label: 'GitHub', icon: 'github', url: 'https://github.com/reqb' },
+    { label: 'Discord', icon: 'discord', url: 'https://discord.gg/mikasa' },
+    { label: 'GitHub', icon: 'github', url: 'https://github.com/cvpx' },
   ],
   badges: [
     { label: 'Bug Hunter Gold', icon: 'assets/discord_badges/bug_hunter_level_2.svg' },
