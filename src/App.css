@@ -172,13 +172,12 @@
 .corner-player {
   top: 1rem;
   left: 1rem;
-  min-width: 260px;
+  min-width: 220px;
   transform: translate3d(-12px, -8px, 0);
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  display: inline-flex;
   align-items: center;
-  gap: 0.9rem 1rem;
-  padding: 0.9rem 1rem;
+  gap: 0.8rem;
+  padding: 0.8rem 0.9rem;
 }
 
 .corner-player__button {
@@ -357,8 +356,8 @@
   --card-shift-y: 0px;
   --card-glow-x: 50%;
   --card-glow-y: 24%;
-  width: min(100%, 490px);
-  min-height: 520px;
+  width: min(100%, 540px);
+  min-height: 480px;
   position: relative;
   margin-inline: auto;
   overflow: hidden;
