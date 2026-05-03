@@ -2,8 +2,8 @@ import type { ProfileConfigSource } from './schema'
 
 const profileConfig: ProfileConfigSource = {
   content: {
-    username: 'reqb',
-    siteTitle: '@reqb | torn',
+    username: '@reqb',
+    siteTitle: 'torn apart',
     enterButtonLabel: 'click here',
     enterButtonAriaLabel: 'Enter profile',
     audioPlayLabel: 'Play audio',
@@ -17,7 +17,7 @@ const profileConfig: ProfileConfigSource = {
     pronouns: 'he / him',
     badgesAriaLabel: 'Discord badges',
     locationAriaLabel: 'Location',
-    location: 'everywhere X_X',
+    location: 'nowhere',
     bio: 'I love you',
     socialNavAriaLabel: 'Social links',
     nowPlayingLabel: '#1 nowplaying',
