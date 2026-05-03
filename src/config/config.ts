@@ -39,7 +39,6 @@ const profileConfig: ProfileConfigSource = {
   },
   socials: [
     { label: 'Discord', icon: 'discord', url: 'https://discord.gg/reqb' },
-    { label: 'Telegram', icon: 'telegram', url: 'https://t.me/tornbleh' },
   ],
   badges: [
     { label: 'Bug Hunter Gold', icon: 'assets/discord_badges/bug_hunter_level_2.svg' },
