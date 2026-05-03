@@ -17,8 +17,8 @@ const profileConfig: ProfileConfigSource = {
     pronouns: 'he / him',
     badgesAriaLabel: 'Discord badges',
     locationAriaLabel: 'Location',
-    location: 'Somewhere new',
-    bio: 'developer, internet enjoyer.',
+    location: 'everywhere X_X',
+    bio: 'I love you',
     socialNavAriaLabel: 'Social links',
     nowPlayingLabel: '#1 nowplaying',
     lastfmLoadingTimestampLabel: 'loading',
@@ -39,9 +39,7 @@ const profileConfig: ProfileConfigSource = {
   },
   socials: [
     { label: 'Discord', icon: 'discord', url: 'https://discord.gg/reqb' },
-    { label: 'GitHub', icon: 'github', url: 'https://github.com/reqb' },
-    { label: 'Website', icon: 'globe', url: 'https://reqb.com' },
-    { label: 'YouTube', icon: 'youtube', url: 'https://youtube.com/@reqb' },
+    { label: 'Telegram', icon: 'telegram', url: 'https://t.me/tornbleh' },
   ],
   badges: [
     { label: 'Bug Hunter Gold', icon: 'assets/discord_badges/bug_hunter_level_2.svg' },
@@ -64,7 +62,7 @@ const profileConfig: ProfileConfigSource = {
   api: {
     lastfmPath: '/api/lastfm',
     lastfmUsername: 'reqb',
-    lastfmEnabled: true,
+    lastfmEnabled: false,
     viewsPath: '/api/views',
     refreshIntervalMs: 240_000,
   },
