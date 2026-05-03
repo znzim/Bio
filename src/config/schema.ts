@@ -1,4 +1,4 @@
-export type IconName = 'discord' | 'github' | 'globe' | 'youtube' | 'telegram'
+export type IconName = 'discord' | 'github' | 'globe' | 'youtube'
 
 export interface SocialLink {
   label: string
