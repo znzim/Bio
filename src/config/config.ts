@@ -67,9 +67,9 @@ const profileConfig: ProfileConfigSource = {
     refreshIntervalMs: 240_000,
   },
   theme: {
-    accent: '#ff7bc2',
-    accentSoft: '#ffb7db',
-    accentStrong: '#ff4ba6',
+    accent: '#ff0000',
+    accentSoft: '#810000',
+    accentStrong: '#7a0000',
     warning: '#ffd86b',
     warningSoft: '#ffe29a',
   },
